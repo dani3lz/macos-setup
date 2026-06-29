@@ -27,6 +27,16 @@ sudo systemctl restart gdm3          # logs you out
 sudo bash set-gdm-background.sh --restore
 ```
 
+## Optional: Firefox (snap) macOS look + declutter
+Run Firefox **once** to create its profile, **close it**, then:
+```bash
+bash setup-firefox.sh
+```
+Applies the WhiteSur Firefox theme (rounded macOS tabs/toolbar), the built-in **Dark**
+theme (no purple), and declutter (no Pocket / Firefox View, bookmarks bar on new-tab only,
+clean new-tab page). Detects the profile automatically. Optional finishing touch:
+*Customize Toolbar → drag the “+” (New Tab) button up into the title-bar area.*
+
 ## Notes / gotchas
 - **No glass-blur** on the dock/top bar on purpose — Blur my Shell was unreliable on this
   AMD laptop (white bar at login, square corners). The dark-translucent dock is the stable
