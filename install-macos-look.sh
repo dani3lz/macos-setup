@@ -180,6 +180,14 @@ else
   warn "Dash-to-Dock schema not loaded yet — re-run this block after first login if the dock looks default"
 fi
 
+# GNOME Terminal: subtle 5% transparency (default profile, detected dynamically)
+TPID="$(gsettings get org.gnome.Terminal.ProfilesList default 2>/dev/null | tr -d \"'\")"
+if [ -n "$TPID" ]; then
+  TPROF="org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$TPID/"
+  gsettings set "$TPROF" use-transparent-background true 2>/dev/null || warn "terminal transparency unsupported here"
+  gsettings set "$TPROF" background-transparency-percent 5 2>/dev/null || true
+fi
+
 # wallpaper (desktop + lock)
 [ -f "$WALL/Ventura-dark.jpg" ] && {
   gset org.gnome.desktop.background picture-uri      "file://$WALL/Ventura-light.jpg"
