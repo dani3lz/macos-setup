@@ -181,7 +181,7 @@ else
 fi
 
 # GNOME Terminal: subtle 5% transparency (default profile, detected dynamically)
-TPID="$(gsettings get org.gnome.Terminal.ProfilesList default 2>/dev/null | tr -d \"'\")"
+TPID=$(gsettings get org.gnome.Terminal.ProfilesList default 2>/dev/null | tr -d "'")
 if [ -n "$TPID" ]; then
   TPROF="org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$TPID/"
   gsettings set "$TPROF" use-transparent-background true 2>/dev/null || warn "terminal transparency unsupported here"
